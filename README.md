@@ -45,9 +45,14 @@ help to build evolutionary models more adequate for this type of data.
 
 #### R - It contains all the scripts of the analyses and figures done in R
 
-|- data
+|- data  
 |---- Corrected_C_californica_chloroplast_genome.gb - **Reference genome of _C. californica_**.  
 |---- Coverage.csv - data to generate the coverage plot.  
 |---- length_data_short.csv - data to generate chloroplasts comparison plot.  
 |---- structure_data.xlsx - this is the main dataset of structural information. It contains matrices of presence/abscence of genes and introns.  
+|-scripts  [with self explanatory names and plenty of comments]
+|---- anc_states_parsimony.R  
+|---- check_convergence.R - Check topological convergence of MCMCs from RevBayes.  
+|---- concatenating_genes.R - To concatenate rbcl and rps2 alignments for the nucleotide based inferences.  
+|---- coverage_plot.R - script to produce figure C.5 of the manuscript.  
 
