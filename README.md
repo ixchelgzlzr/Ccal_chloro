@@ -1,5 +1,5 @@
 # Data and scripts for the paper "The chloroplast genome of _Calasterella californica_ in relation to structural genomic evolution in liverworts" 
-Submitted to **Molecular phylogenetics and evolution**
+Submitted to **Molecular Phylogenetics and Evolution**
 
 ### Abstract
 
@@ -10,8 +10,7 @@ are diagnostic of large clades; and thus, there have been studies that have
 used structural changes as characters for phylogenetic analysis of land plants.
 Thanks to a recent increase in the availability of chloroplast genomes, it is
 now possible to study the evolution of these structural changes in historically
-understudied groups like liverworts. In this paper, we report the de novo as-
-sembly of the chloroplast genome of _Calasterella californica_, and compare
+understudied groups like liverworts. In this paper, we report the de novo assembly of the chloroplast genome of _Calasterella californica_, and compare
 it to the plastome of 38 other species of liverworts. Furthermore, we use a
 combination of phylogenetic inference and stochastic mapping tools to assess 
 the use of chloroplast structural changes in phylogenetic inference, and
@@ -73,6 +72,8 @@ This folder contains the sequence data necessary to run iqtree on rps4 and rbcL 
 #### 3) structural_phylo_analysis
 
 This folder contains the scripts necessary to perform the phylogenetic analyses based on structural data. These analyses were set up in RevBayes v1.2.4.  
+
+Notice that the stochastic map script runs on a fixed topology inferred from sequence data, stored in data/sequence_data/concatenated_rbcL_rps4/partitions.nex.treefile.  
   
 |-**data**
 |--- coding_regions_no_Sphagnum.nexus  
@@ -84,5 +85,7 @@ This folder contains the scripts necessary to perform the phylogenetic analyses 
 |--- mk_G_inferenceper_datatype_assymetric.Rev - phylogenetic inference using only structural data.  
 |--- stoch_map_mk_G_datatype_assymetric.Rev - stochastic maps of gene evolution.
 
+
+---
 
 
