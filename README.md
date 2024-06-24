@@ -44,13 +44,13 @@ help to build evolutionary models more adequate for this type of data.
 
 #### R - It contains all the scripts of the analyses and figures done in R
 
-|- data  
+|- **data**  
 |---- Corrected_C_californica_chloroplast_genome.gb - **Reference genome of _C. californica_**.  
 |---- Coverage.csv - data to generate the coverage plot.  
 |---- length_data_short.csv - data to generate chloroplasts comparison plot.  
 |---- structure_data.xlsx - this is the main dataset of structural information. It contains matrices of presence/abscence of genes and introns.  
   
-|-scripts  [with self explanatory names and plenty of comments]  
+|-**scripts**  [with self explanatory names and plenty of comments]  
 |---- check_convergence.R - Check topological convergence of MCMCs from RevBayes.  
 |---- concatenating_genes.R - To concatenate rbcl and rps2 alignments for the nucleotide based inferences.  
 |---- coverage_plot.R - script to produce figure C.5 of the manuscript.  
@@ -64,3 +64,8 @@ help to build evolutionary models more adequate for this type of data.
 |---- three_phylogenies.R - produces Fig. 23 of the manuscript.  
 
 
+#### seq_phylo_analyses 
+
+This folder contains the sequence data necessary to run iqtree on rps4 and rbcL for liverworts. To replicate our analyses, you can run the line below:
+
+`iqtree -s sequence_data/concatenated_rbcL_rps4/concatenated_rbcL_rps4.phy -spp sequence_data/concatenated_rbcL_rps4/partitions.nex -m GTR+I+G -bb 1000`
