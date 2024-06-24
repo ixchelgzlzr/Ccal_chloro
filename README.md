@@ -49,9 +49,18 @@ help to build evolutionary models more adequate for this type of data.
 |---- Coverage.csv - data to generate the coverage plot.  
 |---- length_data_short.csv - data to generate chloroplasts comparison plot.  
 |---- structure_data.xlsx - this is the main dataset of structural information. It contains matrices of presence/abscence of genes and introns.  
+  
 |-scripts  [with self explanatory names and plenty of comments]
-|---- anc_states_parsimony.R  
 |---- check_convergence.R - Check topological convergence of MCMCs from RevBayes.  
 |---- concatenating_genes.R - To concatenate rbcl and rps2 alignments for the nucleotide based inferences.  
 |---- coverage_plot.R - script to produce figure C.5 of the manuscript.  
+|---- Introns_figure.R - called by structure_all.R.  
+|---- Parsimony_analysis.R  
+|---- post_processing_stoch_maps.R - process the output of stoch maps in RevBayes and produces figures in Appendice E and F.  
+|---- presence-abscence_figure.R - called by structure_all.R.  
+|---- rates_distributions_figure.R - produces Fig.4 of the manuscript.  
+|---- Size_comparison_plot_3.R - produces Fig. D.6 of the manuscript.  
+|---- structure_all.R - produces Fig. 2 of the manuscript.  
+|---- three_phylogenies.R - produces Fig. 23 of the manuscript.  
+
 
