@@ -45,9 +45,9 @@ help to build evolutionary models more adequate for this type of data.
 
 #### R - It contains all the scripts of the analyses and figures done in R
 
- - data
-|---- Corrected_C_californica_chloroplast_genome.gb - **Reference genome of _C. californica_**
-|---- Coverage.csv - data to generate the coverage plot.
-|---- length_data_short.csv - data to generate chloroplasts comparison plot
-|---- structure_data.xlsx - this is the main dataset of structural information. It contains matrices of presence/abscence of genes and introns. 
+|- data
+|---- Corrected_C_californica_chloroplast_genome.gb - **Reference genome of _C. californica_**.  
+|---- Coverage.csv - data to generate the coverage plot.  
+|---- length_data_short.csv - data to generate chloroplasts comparison plot.  
+|---- structure_data.xlsx - this is the main dataset of structural information. It contains matrices of presence/abscence of genes and introns.  
 
