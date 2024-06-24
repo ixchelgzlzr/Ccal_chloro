@@ -1,4 +1,4 @@
-# Data and scripts for the paper "The chloroplast genome of Calasterella californica in relation to structural genomic evolution in liverworts" 
+# Data and scripts for the paper "The chloroplast genome of _Calasterella californica_ in relation to structural genomic evolution in liverworts" 
 Submitted to **Molecular phylogenetics and evolution**
 
 ### Abstract
@@ -69,3 +69,20 @@ help to build evolutionary models more adequate for this type of data.
 This folder contains the sequence data necessary to run iqtree on rps4 and rbcL for liverworts. To replicate our analyses, you can run the line below:
 
 `iqtree -s sequence_data/concatenated_rbcL_rps4/concatenated_rbcL_rps4.phy -spp sequence_data/concatenated_rbcL_rps4/partitions.nex -m GTR+I+G -bb 1000`
+
+#### 3) structural_phylo_analysis
+
+This folder contains the scripts necessary to perform the phylogenetic analyses based on structural data. These analyses were set up in RevBayes v1.2.4.  
+  
+|-**data**
+|--- coding_regions_no_Sphagnum.nexus  
+|--- introns_no_Sphagnum.nexus  
+|--- sequence_data - folder that contains the genes alignments for the combined analysis.  
+
+|-**scripts**  [with self explanatory names and plenty of comments]  
+|--- combined_mole_structure.Rev - phylogenetic inference using structural + sequence data.  
+|--- mk_G_inferenceper_datatype_assymetric.Rev - phylogenetic inference using only structural data.  
+|--- stoch_map_mk_G_datatype_assymetric.Rev - stochastic maps of gene evolution.
+
+
+
