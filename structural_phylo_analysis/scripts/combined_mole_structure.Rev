@@ -1,0 +1,261 @@
+################-################-################-################-################
+#
+# Phylogenetic inference of liverwort relationships using structural changes
+# and DNA sequence data
+# in the chloroplast
+#
+################-################-################-################-################
+
+# moves container
+moves = VectorMoves()
+
+# monitors vector
+monitors = VectorMonitors()
+
+# convenient constants
+H = ln(10) / (qnorm(0.975) - qnorm(0.025))
+
+# set up output dir and extra variable
+out_dir <- "output_for_paper/combined/"
+extra   <- "1"
+
+ngen    <- 80000
+nburnin <- 500
+
+
+################
+# loading data #
+################
+
+# read structural data
+data[1] = readDiscreteCharacterData("data/coding_regions.nexus")
+data[2] = readDiscreteCharacterData("data/introns.nexus")
+
+
+# read the sequence data
+  # get the files names
+moledata[1] = readDiscreteCharacterData( "data/sequence_data/aligned_rbcL_chloro.fasta" )
+moledata[2] = readDiscreteCharacterData( "data/sequence_data/aligned_rps4_chloro.fasta" )
+
+  # how many alignments
+naln = moledata.size()
+
+
+# create helper variables
+taxa         <- data[1].names()
+num_taxa     <- data[1].size()
+num_branches <- 2 * num_taxa - 3
+
+
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#############################
+# specifying the tree model #
+#############################
+
+# get a prior on branch lengths from a dirichlet 
+bl ~ dnDirichlet(rep(1, num_branches))
+
+ # add some moves on the branch lengths
+moves.append(mvBetaSimplex(bl, weight = num_branches))
+
+# get a prior on topology
+topology ~ dnUniformTopology(taxa)
+
+ # some moves on the topology
+moves.append(mvNNI(topology, weight=num_branches/2.0))
+moves.append(mvSPR(topology, weight=num_branches/10.0))
+
+# assemble the tree
+phylogeny := fnTreeAssembly(topology, bl)
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#############################################
+# The MK + G model for the structural data  #
+#############################################
+n_max_states <- 8
+
+# make an empty file for patition information
+
+
+# make partitions per number of states
+
+# start a counter
+  idx = 0
+
+#for each type of data
+for (j in 1:data.size()){
+
+    # for each number of character states
+  for (i in 2:n_max_states) {
+
+    # make a tempory character alignment
+    data_tmp <- data[j]
+
+    # retain characters with i states
+    data_tmp.setNumStatesPartition(i)
+
+    # if there are more than zero characters with this many states...
+    if ( data_tmp.nchar() > 0 ) {
+
+        # store the data partition
+        data_partitions[++idx] = data_tmp
+        nc[idx] = i
+        write( "This partition has " + i + " states and " + data_tmp.nchar() + " characters. \n", filename = "output_combined/partition_info.txt", append = TRUE, separator = "\n") 
+
+    }
+  }
+}
+
+
+# compute the number of partitions
+num_parts = data_partitions.size()
+
+
+# Specifying the gamma parameter
+num_rate_cats = 4
+
+site_rate_alpha ~ dnUniform(0, 10)
+moves.append( mvScale(site_rate_alpha ~ dnUniform(0, 10) ) )
+
+site_rates := fnDiscretizeGamma(site_rate_alpha, site_rate_alpha, num_rate_cats)
+
+
+# # set Beta prior on state frequencies
+
+# estimate parameters of Beta distribution
+alpha_beta ~ dnUniform(0,10)
+beta_beta  ~ dnUniform(0,10)
+
+ # add some moves
+moves.append(mvScale(alpha_beta, weight = 2.0) )
+moves.append(mvScale(beta_beta, weight = 2.0) )
+
+# get the categories from a discretized beta
+num_cats = 4
+cats := fnDiscretizeBeta(alpha_beta, beta_beta, num_cats)
+
+
+
+#Specify the Q matrix for each partition, allowing asymmetric matrices for bunary traits
+
+for (n in 1:num_parts){
+  if (nc[n] == 2){
+    for (i in 1:cats.size()){
+      Q[n][i] := fnF81(simplex(abs(1-cats[i]), cats[i]))
+    }
+  } else {
+    Q[n][1] := fnJC(nc[n])
+  }
+}
+
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#######################################
+# GTR + G model for the sequence data #
+#######################################
+
+# Q matrix per partition
+
+for (i in 1:naln) {
+  # the stationary frequency
+  mole_pi[i] ~ dnDirichlet(rep(1,4))
+  moves.append( mvBetaSimplex(mole_pi[i], weight = 1.0) )
+
+  # the exchangeability rates
+  mole_kappa[i] ~ dnDirichlet(rep(1,6))
+  moves.append( mvBetaSimplex(mole_kappa[i], weight = 1.0))
+
+  # create the Q matrices
+  mole_Q[i] := fnGTR(mole_kappa[i], mole_pi[i])
+
+  # the site rates drawn from a gamma distribution
+  alpha[i] ~ dnExponential( 1.0 )
+  moves.append( mvScale(alpha[i], lambda=0.01, weight=0.3) )
+  moves.append( mvScale(alpha[i], lambda=0.1,  weight=0.3) )
+  moves.append( mvScale(alpha[i], lambda=1,    weight=0.3) )
+  mole_site_rates[i] := fnDiscretizeGamma( alpha[i], alpha[i], 4)
+}
+
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+###############################################
+# Here is where we get the proportional rates #
+###############################################
+
+# we allow different partitions to evolve at different rates
+# get total number of partitions (structural and molecular)
+total_num_part := num_parts + naln
+
+# get the relative rates the MRM way ;)
+
+# for each partition
+for (i in 1:total_num_part){
+
+  # get a relative rate from an exponential prior
+  relative_rates[i] ~ dnExponential(1.0) 
+
+  # and add moves on it
+  moves.append(mvScale(relative_rates[i]))
+
+}
+
+
+
+# make PhyloCTMC model for the strutural data
+for (i in 1:num_parts){
+  if(nc[i] == 2){
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i], siteRates = site_rates * relative_rates[i], type = "Standard", siteMatrices=TRUE)
+    phy[i].clamp(data_partitions[i])
+  } else {
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i][1], siteRates = site_rates * relative_rates[i], type = "Standard")
+    phy[i].clamp ( data_partitions[i] )
+  }
+}
+
+
+# make PhyloCTMC for the molecular data
+# the trick here is to call the correct relative rates
+for (i in 1:naln){
+    seq[i] ~ dnPhyloCTMC(phylogeny, mole_Q[i], siteRates = mole_site_rates[i] * relative_rates[6+i], type = "DNA")
+    seq[i].clamp ( moledata[i] )
+  }
+
+
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#####################
+# Run the analysis  #
+#####################
+
+# call my model
+mymodel = model(phylogeny)
+
+
+# the monitors 
+monitors.append( mnModel( filename= out_dir + "combined_" + extra + ".log", printgen=1))
+monitors.append( mnFile(  filename= out_dir + "combined_" + extra + ".trees", printgen=10, phylogeny))
+monitors.append( mnScreen(printgen=10))
+
+
+# set up MCMC
+mymcmc = mcmc(mymodel, monitors, moves, nruns=1, combine="none")
+
+# run a burnin
+if (nburnin > 0){
+  mymcmc.run(generations = nburnin, tuningInterval = 10)
+  mymcmc.operatorSummary()
+}
+
+# run the analysis
+mymcmc.run(generations = ngen)
+
+# make summary trees
+trees = readTreeTrace(out_dir + "combined_" + extra + ".trees",  burnin = 0.25, "non-clock")
+mccTree(trees, out_dir + "MCC_tree" + extra + ".tre", positiveBranchLengths = T)
+mapTree(trees, out_dir + "MCAP_tree" + extra + ".tre", positiveBranchLengths = T)

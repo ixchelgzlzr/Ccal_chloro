@@ -1,0 +1,49 @@
+#NEXUS
+[Data written by write.nexus.data.R, Mon Feb 12 14:03:17 2024]
+BEGIN DATA;
+  DIMENSIONS NTAX=40 NCHAR=1;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Calasterella_californica         0
+    Asterella_cruciata               0
+    Asterella_leptophyla             0
+    Asterella_mussuriensis           0
+    Asterella_wallichiana            0
+    Asterellopsis_grollei            0
+    Cryptomitrium_himalayense        0
+    Mannia_controversa               0
+    Mannia_fragans                   0
+    Plagiochasma_appendiculatum      0
+    Plagiochasma_intermedium         0
+    Reboulia_hemisphaerica           0
+    Bazzania_praerupta               0
+    Hebertus_dicranus                0
+    Plagiochila_chinensis            0
+    Trichocolea_tomentella           0
+    Calypogeia_fissa                 0
+    Scapania_ciliata                 0
+    Schistochilia_macrodonta         1
+    Cheilolejeunea_xanthocarpa       2
+    Cololejeunea_lanciloba           2
+    Ptychanthus_striatus             2
+    Jubula_hutchinsiae               2
+    Frullania_nodulosa               0
+    Radula_japonica                  1
+    Ptilidium_ciliare                1
+    Aneura_pinguis                   1
+    Aneura_mirabilis                 0
+    Riccardia_latifrons              0
+    Metzgeria_leptoneura             1
+    Makinoa_crispata                 1
+    Fossombronia_cristula            1
+    Pellia_endiviifolia              0
+    Riccia_cavernosa                 1
+    Conocephalum_conicum             1
+    Blasia_pusilla                   1
+    Haplomitrium_mnioides            3
+    Treubia_lacunosa                 1
+    Sphaerocarpos_texanus            1
+    Sphagnum_palustre                0
+  ;
+END;
+

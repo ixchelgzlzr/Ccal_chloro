@@ -1,0 +1,184 @@
+IQ-TREE multicore version 1.6.12 for Mac OS X 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    Ixchels-MacBook-Pro.local (SSE4.2, 16 GB RAM)
+Command: iqtree -s data/sequence_data/concatenated_rbcL_rps4/concatenated_rbcL_rps4.phy -spp data/sequence_data/concatenated_rbcL_rps4/partitions.nex -m GTR+I+G -bb 1000
+Seed:    659402 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Feb  1 20:45:09 2024
+Kernel:  SSE2 - 1 threads (10 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 10 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading partition model file data/sequence_data/concatenated_rbcL_rps4/partitions.nex ...
+Reading alignment file data/sequence_data/concatenated_rbcL_rps4/concatenated_rbcL_rps4.phy ... Phylip format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 40 sequences with 2049 columns, 918 distinct patterns
+805 parsimony-informative, 200 singleton sites, 1044 constant sites
+                             Gap/Ambiguity  Composition  p-value
+   1  Sphagnum_palustre              0.59%    failed      0.12%
+   2  Calasterella_californica       0.59%    passed     23.14%
+   3  Trichocolea_tomentella         0.59%    passed     99.47%
+   4  Treubia_lacunosa               0.59%    passed     10.55%
+   5  Sphaerocarpos_texanus          0.59%    passed      9.67%
+   6  Schistochilia_macrodonta       0.59%    passed     89.90%
+   7  Scapania_ciliata               0.59%    passed     75.54%
+   8  Riccia_cavernosa               0.59%    passed      6.15%
+   9  Riccardia_latifrons            0.59%    failed      1.81%
+  10  Reboulia_hemisphaerica         0.44%    passed     50.63%
+  11  Radula_japonica                0.59%    passed     92.24%
+  12  Ptychanthus_striatus           1.12%    passed     84.73%
+  13  Ptilidium_ciliare              0.59%    passed     92.41%
+  14  Plagiochila_chinensis          0.59%    passed     45.34%
+  15  Plagiochasma_intermedium       0.44%    passed     27.91%
+  16  Plagiochasma_appendiculatum    0.44%    passed     33.16%
+  17  Pellia_endiviifolia            0.59%    passed      7.04%
+  18  Metzgeria_leptoneura           0.59%    passed     31.25%
+  19  Mannia_fragans                 0.44%    passed     34.17%
+  20  Mannia_controversa             0.44%    passed     32.62%
+  21  Makinoa_crispata               0.73%    failed      3.24%
+  22  Jubula_hutchinsiae             0.59%    passed     69.45%
+  23  Hebertus_dicranus              0.59%    passed     45.34%
+  24  Haplomitrium_mnioides          0.73%    failed      0.00%
+  25  Frullania_nodulosa             0.59%    passed     97.94%
+  26  Fossombronia_cristula          0.59%    failed      0.00%
+  27  Cryptomitrium_himalayense      0.59%    passed     32.01%
+  28  Conocephalum_conicum           0.59%    failed      0.89%
+  29  Cololejeunea_lanciloba         1.02%    passed     71.01%
+  30  Cheilolejeunea_xanthocarpa     1.02%    passed     71.01%
+  31  Calypogeia_fissa               0.59%    failed      4.17%
+  32  Blasia_pusilla                 0.15%    failed      3.09%
+  33  Bazzania_praerupta             0.59%    passed      7.47%
+  34  Asterellopsis_grollei          0.59%    passed     37.06%
+  35  Asterella_wallichiana          0.44%    passed     51.98%
+  36  Asterella_mussuriensis         0.44%    passed     39.75%
+  37  Asterella_leptophyla           0.44%    passed     33.33%
+  38  Asterella_cruciata             0.44%    passed     36.70%
+  39  Aneura_pinguis                 0.59%    failed      0.00%
+  40  Aneura_mirabilis               0.59%    failed      0.00%
+****  TOTAL                          0.58%  10 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 2 partitions...
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1	DNA	40	1440	482	837	GTR+I+G	part1
+2	DNA	40	609	323	207	GTR+I+G	part2
+Degree of missing data: 0.000
+Info: multi-threading strategy over partitions
+
+NOTE: Hebertus_dicranus is identical to Plagiochila_chinensis but kept for subsequent analysis
+NOTE: Cheilolejeunea_xanthocarpa is identical to Cololejeunea_lanciloba but kept for subsequent analysis
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.003 seconds
+Generating 1000 samples for ultrafast bootstrap (seed: 659402)...
+
+NOTE: 8 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -21757.454
+Current log-likelihood at step 1: -20487.184
+Current log-likelihood at step 2: -20176.633
+Current log-likelihood at step 3: -20175.092
+Current log-likelihood at step 4: -20173.499
+Current log-likelihood at step 5: -20171.913
+Current log-likelihood at step 6: -20170.450
+Current log-likelihood at step 7: -20169.101
+Current log-likelihood at step 8: -20167.799
+Current log-likelihood at step 9: -20166.491
+Current log-likelihood at step 10: -20165.111
+Current log-likelihood at step 11: -20163.662
+Current log-likelihood at step 12: -20162.150
+Current log-likelihood at step 13: -20160.629
+Current log-likelihood at step 14: -20159.182
+Current log-likelihood at step 15: -20158.049
+Current log-likelihood at step 16: -20157.196
+Current log-likelihood at step 17: -20156.706
+Current log-likelihood at step 18: -20156.428
+Current log-likelihood at step 19: -20156.324
+Current log-likelihood at step 20: -20156.280
+Partition-specific rates:  0.846 1.364
+Parameters optimization took 19 rounds (1.355 sec)
+
+Computing ML distances based on estimated model parameters... 0.019 sec
+Computing BIONJ tree...
+0.001 seconds
+Log-likelihood of BIONJ tree: -20127.556
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.364 second
+Computing log-likelihood of 98 initial trees ... 1.435 seconds
+Current best score: -20127.132
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -20113.661
+Current log-likelihood at step 1: -20113.476
+Current log-likelihood at step 2: -20113.460
+Parameters optimization took 1 rounds (0.105 sec)
+
+BETTER TREE FOUND at iteration 1: -20113.460
+UPDATE BEST LOG-LIKELIHOOD: -20113.459
+Iteration 10 / LogL: -20113.459 / Time: 0h:0m:4s
+Iteration 20 / LogL: -20148.464 / Time: 0h:0m:6s
+Finish initializing candidate tree set (5)
+Current best tree score: -20113.459 / CPU time: 4.717
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -20113.767 / Time: 0h:0m:7s (0h:0m:19s left)
+UPDATE BEST LOG-LIKELIHOOD: -20113.457
+UPDATE BEST LOG-LIKELIHOOD: -20113.456
+UPDATE BEST LOG-LIKELIHOOD: -20113.455
+Iteration 40 / LogL: -20157.011 / Time: 0h:0m:9s (0h:0m:14s left)
+Iteration 50 / LogL: -20113.627 / Time: 0h:0m:11s (0h:0m:11s left)
+Log-likelihood cutoff on original alignment: -20176.347
+Iteration 60 / LogL: -20113.477 / Time: 0h:0m:12s (0h:0m:8s left)
+Iteration 70 / LogL: -20113.455 / Time: 0h:0m:14s (0h:0m:6s left)
+Iteration 80 / LogL: -20115.035 / Time: 0h:0m:15s (0h:0m:4s left)
+Iteration 90 / LogL: -20113.466 / Time: 0h:0m:17s (0h:0m:2s left)
+Iteration 100 / LogL: -20113.455 / Time: 0h:0m:18s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -20176.347
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.999
+TREE SEARCH COMPLETED AFTER 102 ITERATIONS / Time: 0h:0m:19s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -20113.454
+Current log-likelihood at step 1: -20113.450
+Partition-specific rates:  0.850 1.355
+Parameters optimization took 0 rounds (0.036 sec)
+
+BEST SCORE FOUND : -20113.450
+Creating bootstrap support values...
+Split supports printed to NEXUS file data/sequence_data/concatenated_rbcL_rps4/partitions.nex.splits.nex
+Total tree length: 2.820
+
+Total number of iterations: 102
+CPU time used for tree search: 17.503 sec (0h:0m:17s)
+Wall-clock time used for tree search: 17.561 sec (0h:0m:17s)
+Total CPU time used: 19.057 sec (0h:0m:19s)
+Total wall-clock time used: 19.129 sec (0h:0m:19s)
+
+Computing bootstrap consensus tree...
+Reading input file data/sequence_data/concatenated_rbcL_rps4/partitions.nex.splits.nex...
+40 taxa and 173 splits.
+Consensus tree written to data/sequence_data/concatenated_rbcL_rps4/partitions.nex.contree
+Reading input trees file data/sequence_data/concatenated_rbcL_rps4/partitions.nex.contree
+Log-likelihood of consensus tree: -20113.457
+
+Analysis results written to: 
+  IQ-TREE report:                data/sequence_data/concatenated_rbcL_rps4/partitions.nex.iqtree
+  Maximum-likelihood tree:       data/sequence_data/concatenated_rbcL_rps4/partitions.nex.treefile
+  Likelihood distances:          data/sequence_data/concatenated_rbcL_rps4/partitions.nex.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          data/sequence_data/concatenated_rbcL_rps4/partitions.nex.splits.nex
+  Consensus tree:                data/sequence_data/concatenated_rbcL_rps4/partitions.nex.contree
+  Screen log file:               data/sequence_data/concatenated_rbcL_rps4/partitions.nex.log
+
+Date and Time: Thu Feb  1 20:45:28 2024

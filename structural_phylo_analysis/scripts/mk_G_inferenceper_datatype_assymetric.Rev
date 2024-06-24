@@ -1,0 +1,191 @@
+################-################-################-################-################
+#
+# Phylogenetic inference of liverwort relationships using structural changes
+# in the chloroplast
+#
+################-################-################-################-################
+
+# moves container
+moves = VectorMoves()
+
+# monitors vector
+monitors = VectorMonitors()
+
+# convenient constants
+H = ln(10) / (qnorm(0.975) - qnorm(0.025))
+
+
+# set up output dir and extra variable
+out_dir <- "output_for_paper/just_structural_assym_no_sphag/"
+extra   <- "_2"
+
+ngen    <- 70000
+nburnin <- 500
+
+
+################
+# loading data #
+################
+
+data[1] = readDiscreteCharacterData("data/coding_regions_no_Sphagnum.nexus")
+data[2] = readDiscreteCharacterData("data/introns_no_Sphagnum.nexus")
+
+
+# create helper variables
+taxa         <- data[1].names()
+num_taxa     <- data[1].size()
+num_branches <- 2 * num_taxa - 3
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#############################
+# specifying the tree model #
+#############################
+
+# get a prior on branch lengths from a dirichlet 
+bl ~ dnDirichlet(rep(1, num_branches))
+
+ # add some moves on the branch lengths
+moves.append(mvBetaSimplex(bl, weight = num_branches))
+
+# get a prior on topology
+topology ~ dnUniformTopology(taxa)
+
+ # some moves on the topology
+moves.append(mvNNI(topology, weight=num_branches/2.0))
+moves.append(mvSPR(topology, weight=num_branches/10.0))
+
+# assemble the tree
+phylogeny := fnTreeAssembly(topology, bl)
+
+
+####################
+# The MK + G model #
+####################
+n_max_states <- 8
+
+
+# make partitions per number of states
+
+# start a counter
+  idx = 0
+
+#for each type of data
+for (j in 1:data.size()){
+
+    # for each number of character states
+  for (i in 2:n_max_states) {
+
+    # make a tempory character alignment
+    data_tmp <- data[j]
+
+    # retain characters with i states
+    data_tmp.setNumStatesPartition(i)
+
+    # if there are more than zero characters with this many states...
+    # store the data partition
+    if ( data_tmp.nchar() > 0 ) {
+        data_partitions[++idx] = data_tmp
+        nc[idx] = i
+    }
+  }
+}
+
+
+# compute the number of partitions
+
+num_parts = data_partitions.size()
+
+
+# Specifying the gamma parameter
+num_rate_cats = 4
+
+site_rate_alpha ~ dnUniform(0, 10)
+moves.append( mvScale(site_rate_alpha ~ dnUniform(0, 10) ) )
+
+site_rates := fnDiscretizeGamma(site_rate_alpha, site_rate_alpha, num_rate_cats)
+
+
+
+# set Beta prior on state frequencies
+num_cats = 2
+beta_scale ~ dnLognormal( 0.0, sd=2*0.587405 )
+moves.append( mvScale(beta_scale, lambda=1, weight=5.0 ) )
+
+cats := fnDiscretizeBeta(beta_scale, beta_scale, num_cats)
+
+
+
+#Specify the Q matrix for each partition, allowing asymmetric matrices for bunary traits
+
+for (n in 1:num_parts){
+  if (nc[n] == 2){
+    for (i in 1:cats.size()){
+      Q[n][i] := fnF81(simplex(abs(1-cats[i]), cats[i]))
+    }
+  } else {
+    Q[n][1] := fnJC(nc[n])
+  }
+}
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+# we allow different partitions to evolve at different rates
+
+
+# for each partition
+for (i in 1:num_parts){
+
+  # get a relative rate from an exponential prior
+  relative_rates[i] ~ dnExponential(1.0) 
+
+  # and add moves on it
+  moves.append(mvScale(relative_rates[i]))
+
+}
+
+
+
+# make PhyloCTMC model
+for (i in 1:num_parts){
+  if(nc[i] == 2){
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i], siteRates = site_rates * relative_rates[i], type = "Standard", siteMatrices=true)
+    phy[i].clamp(data_partitions[i])
+  } else {
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i][1], siteRates = site_rates * relative_rates[i], type = "Standard")
+    phy[i].clamp ( data_partitions[i] )
+  }
+}
+
+#-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+#####################
+# Run the analysis  #
+#####################
+
+# call my model
+mymodel = model(phylogeny)
+
+
+# the monitors 
+monitors.append( mnModel( filename= out_dir + "new_param" + extra + ".log", printgen=1))
+monitors.append( mnFile(  filename= out_dir + "new_param" + extra + ".trees", printgen=10, phylogeny))
+monitors.append( mnScreen(printgen=10))
+
+# set up MCMC
+mymcmc = mcmc(mymodel, monitors, moves, combine="none")
+
+
+# run a burnin
+if (nburnin > 0){
+  mymcmc.run(generations = nburnin, tuningInterval = 10)
+  mymcmc.operatorSummary()
+}
+
+# run the analysis
+mymcmc.run(generations = ngen)
+
+# make summary trees
+trees = readTreeTrace(out_dir + "new_param" + extra + ".trees",  burnin = 0.25, "non-clock")
+mccTree(trees, out_dir + "MCC_tree" + extra + ".tre", positiveBranchLengths = TRUE)
+mapTree(trees, out_dir + "MAP_tree" + extra + ".tre", positiveBranchLengths = TRUE)

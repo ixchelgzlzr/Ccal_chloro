@@ -1,0 +1,5 @@
+#nexus
+begin sets;
+    charset part1 = 1-1440;
+    charset part2 = 1441-2049;
+end;

@@ -1,0 +1,3 @@
+alignment	lenght	from	to
+aligned_rbcL_chloro.fasta	1440	1	1440
+aligned_rps4_chloro.fasta	609	1441	2049

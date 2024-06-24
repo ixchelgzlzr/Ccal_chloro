@@ -1,0 +1,142 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=40;
+	taxlabels
+	Aneura_mirabilis
+	Aneura_pinguis
+	Asterella_cruciata
+	Asterella_leptophyla
+	Asterella_mussuriensis
+	Asterella_wallichiana
+	Asterellopsis_grollei
+	Bazzania_praerupta
+	Blasia_pusilla
+	Calasterella_californica
+	Calypogeia_fissa
+	Cheilolejeunea_xanthocarpa
+	Cololejeunea_lanciloba
+	Conocephalum_conicum
+	Cryptomitrium_himalayense
+	Fossombronia_cristula
+	Frullania_nodulosa
+	Haplomitrium_mnioides
+	Hebertus_dicranus
+	Jubula_hutchinsiae
+	Makinoa_crispata
+	Mannia_controversa
+	Mannia_fragans
+	Metzgeria_leptoneura
+	Pellia_endiviifolia
+	Plagiochasma_appendiculatum
+	Plagiochasma_intermedium
+	Plagiochila_chinensis
+	Ptilidium_ciliare
+	Ptychanthus_striatus
+	Radula_japonica
+	Reboulia_hemisphaerica
+	Riccardia_latifrons
+	Riccia_cavernosa
+	Scapania_ciliata
+	Schistochilia_macrodonta
+	Sphaerocarpos_texanus
+	Sphagnum_palustre
+	Treubia_lacunosa
+	Trichocolea_tomentella
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] (Sphagnum_palustre:0.169078,(((((((Calasterella_californica:0.014938,((((Reboulia_hemisphaerica:0.006068,(Plagiochasma_intermedium:0.011206,Plagiochasma_appendiculatum:0.007231)[&label=100]:0.007279)[&label=93]:0.003602,Asterella_mussuriensis:0.010416)[&label=59]:0.001055,(Asterella_wallichiana:0.015699,(Asterella_leptophyla:0.004013,Asterella_cruciata:0.004163)[&label=100]:0.006498)[&label=57]:0.002794)[&label=57]:0.001725,(Mannia_fragans:0.00692,Mannia_controversa:0.007768)[&label=100]:0.007883)[&label=100]:0.007738)[&label=74]:0.002404,(Cryptomitrium_himalayense:0.019318,Asterellopsis_grollei:0.012758)[&label=97]:0.004295)[&label=100]:0.019093,Conocephalum_conicum:0.02623)[&label=92]:0.007746,Riccia_cavernosa:0.028266)[&label=100]:0.021407,Sphaerocarpos_texanus:0.042464)[&label=99]:0.021824,Blasia_pusilla:0.056611)[&label=100]:0.032432,((((((Trichocolea_tomentella:0.047718,Bazzania_praerupta:0.082153)[&label=97]:0.011251,(Plagiochila_chinensis:2.0E-6,Hebertus_dicranus:2.0E-6)[&label=100]:0.037835)[&label=95]:0.012597,(Scapania_ciliata:0.073497,Calypogeia_fissa:0.10685)[&label=86]:0.00759)[&label=100]:0.03521,(Schistochilia_macrodonta:0.111777,((Radula_japonica:0.117406,(((Ptychanthus_striatus:0.022883,(Cololejeunea_lanciloba:2.0E-6,Cheilolejeunea_xanthocarpa:2.0E-6)[&label=100]:0.02882)[&label=100]:0.059106,Jubula_hutchinsiae:0.060183)[&label=98]:0.020828,Frullania_nodulosa:0.062158)[&label=100]:0.021658)[&label=97]:0.018648,Ptilidium_ciliare:0.036941)[&label=65]:0.004201)[&label=85]:0.009722)[&label=97]:0.014912,((Riccardia_latifrons:0.127308,(Aneura_pinguis:0.015527,Aneura_mirabilis:0.024991)[&label=100]:0.124071)[&label=99]:0.029803,Metzgeria_leptoneura:0.102834)[&label=100]:0.05049)[&label=65]:0.006283,(Pellia_endiviifolia:0.0854,(Makinoa_crispata:0.096948,Fossombronia_cristula:0.126735)[&label=92]:0.021582)[&label=75]:0.012587)[&label=99]:0.034472)[&label=99]:0.032092,(Treubia_lacunosa:0.109256,Haplomitrium_mnioides:0.20845)[&label=88]:0.016199);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="sansserif";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="label";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName="sansserif";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="sansserif";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=true;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

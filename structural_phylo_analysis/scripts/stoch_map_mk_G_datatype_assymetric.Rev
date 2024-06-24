@@ -1,0 +1,149 @@
+################-################-################-################-################
+#
+# Phylogenetic inference of liverwort relationships using structural changes
+# in the chloroplast
+#
+################-################-################-################-################
+
+# moves container
+moves = VectorMoves()
+
+# monitors vector
+monitors = VectorMonitors()
+
+# convenient constants
+H = ln(10) / (qnorm(0.975) - qnorm(0.025))
+
+
+################
+# loading data #
+################
+
+dir   <- "data/partitions"
+files <- listFiles(dir)
+
+for (i in 1:files.size()){
+  data_partitions[i] = readDiscreteCharacterData(files[i])
+}
+
+#number of max states per partition
+# make this manually from R
+nc <- v(2,3,4,6,8,2)
+
+
+# create helper variables
+taxa         <- data_partitions[1].names()
+num_taxa     <- data_partitions[1].size()
+num_branches <- 2 * num_taxa - 2
+
+
+# read the sequence generated tree
+phylogeny <- readTrees("data/sequence_data/concatenated_rbcL_rps4/partitions.nex.treefile")[1]
+
+####################
+# The MK + G model #
+####################
+
+# compute the number of partitions
+num_parts = data_partitions.size()
+
+
+# Specifying the gamma parameter
+num_rate_cats = 4
+
+site_rate_alpha ~ dnUniform(0, 10)
+moves.append( mvScale(site_rate_alpha ~ dnUniform(0, 10) ) )
+
+site_rates := fnDiscretizeGamma(site_rate_alpha, site_rate_alpha, num_rate_cats)
+
+
+
+# set Beta prior on state frequencies
+num_cats = 2
+beta_scale ~ dnLognormal( 0.0, sd=2*0.587405 )
+moves.append( mvScale(beta_scale, lambda=1, weight=5.0 ) )
+
+cats := fnDiscretizeBeta(beta_scale, beta_scale, num_cats)
+
+
+
+#Specify the Q matrix for each partition, allowing asymmetric matrices for binary traits
+
+for (n in 1:num_parts){
+  if (nc[n] == 2){
+    for (i in 1:cats.size()){
+      Q[n][i] := fnF81(simplex(abs(1-cats[i]), cats[i]))
+    }
+  } else {
+    Q[n][1] := fnJC(nc[n])
+  }
+}
+
+# matrix probs for binary states
+mat_prior <- rep(1,num_cats)
+matrix_probs ~ dnDirichlet(mat_prior)
+
+moves.append( mvBetaSimplex(matrix_probs, weight=1.0) )
+moves.append( mvDirichletSimplex(matrix_probs, weight=1.5) )
+
+
+
+# make PhyloCTMC model
+for (i in 1:num_parts){
+  if(nc[i] == 2){
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i], siteRates = site_rates, type = "Standard", siteMatrices=matrix_probs)
+    phy[i].clamp(data_partitions[i])
+  } else {
+    phy[i] ~ dnPhyloCTMC(phylogeny, Q[i][1], siteRates = site_rates, type = "Standard", coding="variable")
+    phy[i].clamp ( data_partitions[i] )
+  }
+}
+
+
+# call my model
+mymodel = model(phylogeny)
+
+
+# the monitors 
+monitors.append( mnModel(filename="output_stochastic_mapping/parms_stoch_map.log", printgen=10))
+monitors.append( mnScreen(printgen=1))
+
+# stochastic mapping monitor
+# one file per character
+
+for (i in 1:num_parts){
+  for (j in 1:data_partitions[i].nchar()){
+    monitors.append( mnStochasticCharacterMap(ctmc = phy[i],
+                                          filename = "output_stochastic_mapping/partition" + i + "/character_" + j + ".txt",
+                                          printgen = 10,
+                                          index = j,
+                                          include_simmap = false))
+  }
+}
+
+
+
+
+# set up MCMC
+mymcmc = mcmc(mymodel, monitors, moves, nruns=1, combine="none")
+
+
+# run the analysis
+mymcmc.run(generations = 50000)
+
+
+
+# # read anc states stoch map trace
+# for (i in 1:num_parts){
+#   anc_states_stoch_map = readAncestralStateTrace("output_stochastic_mapping/stoch_map_states_part_" + i + ".log")
+#   char_map_tree = characterMapTree(tree=phylogeny,
+#                  ancestral_state_trace_vector=anc_states_stoch_map,
+#                  character_file="output_stochastic_mapping/MAP_char/MAP_char_hist_part_" + i + ".tree",
+#                  posterior_file="output_stochastic_mapping/MAP_pp/MAP_pp_char_part_" + i + ".tree",
+#                  burnin=0.5)
+
+# }
+
+
+
+

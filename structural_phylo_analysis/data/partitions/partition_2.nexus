@@ -1,0 +1,49 @@
+#NEXUS
+[Data written by write.nexus.data.R, Mon Feb 12 14:03:17 2024]
+BEGIN DATA;
+  DIMENSIONS NTAX=40 NCHAR=7;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Calasterella_californica         1101111
+    Asterella_cruciata               1101111
+    Asterella_leptophyla             1101111
+    Asterella_mussuriensis           1101111
+    Asterella_wallichiana            1101111
+    Asterellopsis_grollei            1101111
+    Cryptomitrium_himalayense        1101111
+    Mannia_controversa               1101111
+    Mannia_fragans                   1101111
+    Plagiochasma_appendiculatum      1101111
+    Plagiochasma_intermedium         1101111
+    Reboulia_hemisphaerica           1101111
+    Bazzania_praerupta               0201022
+    Hebertus_dicranus                0201211
+    Plagiochila_chinensis            0201211
+    Trichocolea_tomentella           0101111
+    Calypogeia_fissa                 0110121
+    Scapania_ciliata                 0001011
+    Schistochilia_macrodonta         0101112
+    Cheilolejeunea_xanthocarpa       0001011
+    Cololejeunea_lanciloba           0001011
+    Ptychanthus_striatus             0001011
+    Jubula_hutchinsiae               0001011
+    Frullania_nodulosa               0001011
+    Radula_japonica                  0001011
+    Ptilidium_ciliare                0202211
+    Aneura_pinguis                   0101111
+    Aneura_mirabilis                 0100110
+    Riccardia_latifrons              0101111
+    Metzgeria_leptoneura             0201111
+    Makinoa_crispata                 0101111
+    Fossombronia_cristula            0001211
+    Pellia_endiviifolia              0101111
+    Riccia_cavernosa                 1101111
+    Conocephalum_conicum             2101111
+    Blasia_pusilla                   2101111
+    Haplomitrium_mnioides            0120111
+    Treubia_lacunosa                 0201200
+    Sphaerocarpos_texanus            1101111
+    Sphagnum_palustre                1000111
+  ;
+END;
+

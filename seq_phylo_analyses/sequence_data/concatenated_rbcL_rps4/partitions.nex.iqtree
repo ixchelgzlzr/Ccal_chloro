@@ -1,0 +1,258 @@
+IQ-TREE 1.6.12 built Aug 15 2019
+
+Partition file name: data/sequence_data/concatenated_rbcL_rps4/partitions.nex
+Input file name: data/sequence_data/concatenated_rbcL_rps4/concatenated_rbcL_rps4.phy
+Type of analysis: tree reconstruction + ultrafast bootstrap (1000 replicates)
+Random seed number: 659402
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+https://doi.org/10.1093/molbev/msu300
+
+Since you used ultrafast bootstrap (UFBoot) please also cite: 
+
+Diep Thi Hoang, Olga Chernomor, Arndt von Haeseler, Bui Quang Minh,
+and Le Sy Vinh (2017) UFBoot2: Improving the ultrafast bootstrap
+approximation. Mol Biol Evol, in press.
+https://doi.org/10.1093/molbev/msx281
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst Biol, 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 40 taxa with 2 partitions and 2049 total sites (0% missing data)
+
+  ID  Name   Type	Seq	Site	Unique	Infor	Invar	Const
+   1  part1  DNA	40	1440	566	482	837	837
+   2  part2  DNA	40	609	381	323	207	206
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+SUBSTITUTION PROCESS
+--------------------
+
+Edge-linked-proportional partition model but separate models between partitions
+
+  ID  Model           Speed  Parameters
+   1  GTR+F+I+G4     0.8497  GTR{2.33393,6.32344,1.21006,1.94908,14.063}+F{0.292595,0.167618,0.227245,0.312542}+I{0.515179}+G4{1.27659}
+   2  GTR+F+I+G4     1.3553  GTR{1.38991,6.75184,0.393884,1.95707,5.58865}+F{0.377934,0.145764,0.159864,0.316439}+I{0.256093}+G4{1.33633}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -20113.4504 (s.e. 454.0788)
+Unconstrained log-likelihood (without tree): -8998.9327
+Number of free parameters (#branches + #model parameters): 98
+Akaike information criterion (AIC) score: 40422.9008
+Corrected Akaike information criterion (AICc) score: 40432.8515
+Bayesian information criterion (BIC) score: 40974.1613
+
+Total tree length (sum of branch lengths): 2.8199
+Sum of internal branch lengths: 0.6911 (24.5072% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'Sphagnum_palustre' is drawn at root
+Numbers in parentheses are  ultrafast bootstrap support (%)
+
++--------------------------------Sphagnum_palustre
+|
+|                            +--Calasterella_californica
+|                         +--| (74)
+|                         |  |           +--Reboulia_hemisphaerica
+|                         |  |        +--| (93)
+|                         |  |        |  |  +--Plagiochasma_intermedium
+|                         |  |        |  +--| (100)
+|                         |  |        |     +--Plagiochasma_appendiculatum
+|                         |  |     +--| (59)
+|                         |  |     |  +--Asterella_mussuriensis
+|                         |  |  +--| (57)
+|                         |  |  |  |  +--Asterella_wallichiana
+|                         |  |  |  +--| (57)
+|                         |  |  |     |  +--Asterella_leptophyla
+|                         |  |  |     +--| (100)
+|                         |  |  |        +--Asterella_cruciata
+|                         |  +--| (100)
+|                         |     |  +--Mannia_fragans
+|                         |     +--| (100)
+|                         |        +--Mannia_controversa
+|                      +--| (100)
+|                      |  |  +--Cryptomitrium_himalayense
+|                      |  +--| (97)
+|                      |     +--Asterellopsis_grollei
+|                   +--| (92)
+|                   |  +----Conocephalum_conicum
+|               +---| (100)
+|               |   +----Riccia_cavernosa
+|           +---| (99)
+|           |   +-------Sphaerocarpos_texanus
+|     +-----| (100)
+|     |     +----------Blasia_pusilla
++-----| (99)
+|     |                       +--------Trichocolea_tomentella
+|     |                    +--| (97)
+|     |                    |  +---------------Bazzania_praerupta
+|     |                 +--| (95)
+|     |                 |  |      +**Plagiochila_chinensis
+|     |                 |  +------| (100)
+|     |                 |         +**Hebertus_dicranus
+|     |           +-----| (100)
+|     |           |     |  +-------------Scapania_ciliata
+|     |           |     +--| (86)
+|     |           |        +--------------------Calypogeia_fissa
+|     |        +--| (97)
+|     |        |  |  +---------------------Schistochilia_macrodonta
+|     |        |  +--| (85)
+|     |        |     |     +----------------------Radula_japonica
+|     |        |     |  +--| (97)
+|     |        |     |  |  |                  +---Ptychanthus_striatus
+|     |        |     |  |  |       +----------| (100)
+|     |        |     |  |  |       |          |    +**Cololejeunea_lanciloba
+|     |        |     |  |  |       |          +----| (100)
+|     |        |     |  |  |       |               +**Cheilolejeunea_xanthocarpa
+|     |        |     |  |  |   +---| (98)
+|     |        |     |  |  |   |   +----------Jubula_hutchinsiae
+|     |        |     |  |  +---| (100)
+|     |        |     |  |      +-----------Frullania_nodulosa
+|     |        |     +--| (65)
+|     |        |        +------Ptilidium_ciliare
+|     |     +--| (65)
+|     |     |  |              +------------------------Riccardia_latifrons
+|     |     |  |         +----| (99)
+|     |     |  |         |    |                       +--Aneura_pinguis
+|     |     |  |         |    +-----------------------| (100)
+|     |     |  |         |                            +---Aneura_mirabilis
+|     |     |  +---------| (100)
+|     |     |            +-------------------Metzgeria_leptoneura
+|     +-----| (99)
+|           |  +---------------Pellia_endiviifolia
+|           +--| (75)
+|              |   +------------------Makinoa_crispata
+|              +---| (92)
+|                  +------------------------Fossombronia_cristula
+|
+|  +--------------------Treubia_lacunosa
++--| (88)
+   +----------------------------------------Haplomitrium_mnioides
+
+Tree in newick format:
+
+(Sphagnum_palustre:0.1690777951,(((((((Calasterella_californica:0.0149383254,((((Reboulia_hemisphaerica:0.0060677810,(Plagiochasma_intermedium:0.0112061245,Plagiochasma_appendiculatum:0.0072312780)100:0.0072789917)93:0.0036021577,Asterella_mussuriensis:0.0104158426)59:0.0010552374,(Asterella_wallichiana:0.0156994373,(Asterella_leptophyla:0.0040133688,Asterella_cruciata:0.0041633015)100:0.0064983172)57:0.0027937267)57:0.0017250249,(Mannia_fragans:0.0069201319,Mannia_controversa:0.0077676300)100:0.0078827720)100:0.0077384307)74:0.0024036929,(Cryptomitrium_himalayense:0.0193183051,Asterellopsis_grollei:0.0127584450)97:0.0042952956)100:0.0190934330,Conocephalum_conicum:0.0262299017)92:0.0077459485,Riccia_cavernosa:0.0282655974)100:0.0214074515,Sphaerocarpos_texanus:0.0424635336)99:0.0218238149,Blasia_pusilla:0.0566105913)100:0.0324319457,((((((Trichocolea_tomentella:0.0477180922,Bazzania_praerupta:0.0821534161)97:0.0112514393,(Plagiochila_chinensis:0.0000020669,Hebertus_dicranus:0.0000020669)100:0.0378349588)95:0.0125966228,(Scapania_ciliata:0.0734974003,Calypogeia_fissa:0.1068502693)86:0.0075903254)100:0.0352096560,(Schistochilia_macrodonta:0.1117774148,((Radula_japonica:0.1174062679,(((Ptychanthus_striatus:0.0228831158,(Cololejeunea_lanciloba:0.0000020669,Cheilolejeunea_xanthocarpa:0.0000020669)100:0.0288203022)100:0.0591061479,Jubula_hutchinsiae:0.0601830367)98:0.0208280878,Frullania_nodulosa:0.0621584320)100:0.0216578924)97:0.0186480029,Ptilidium_ciliare:0.0369406953)65:0.0042009655)85:0.0097217026)97:0.0149122645,((Riccardia_latifrons:0.1273081960,(Aneura_pinguis:0.0155265788,Aneura_mirabilis:0.0249907664)100:0.1240712274)99:0.0298025892,Metzgeria_leptoneura:0.1028339123)100:0.0504896671)65:0.0062833813,(Pellia_endiviifolia:0.0853995927,(Makinoa_crispata:0.0969482726,Fossombronia_cristula:0.1267346231)92:0.0215824601)75:0.0125874609)99:0.0344724997)99:0.0320923132,(Treubia_lacunosa:0.1092563594,Haplomitrium_mnioides:0.2084497494)88:0.0161992630);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 1000bootstrap trees
+Log-likelihood of consensus tree: -20113.456666
+Robinson-Foulds distance between ML tree and consensus tree: 0
+
+Branches with support >0.000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++--------------------------------Sphagnum_palustre
+|
+|                            +--Calasterella_californica
+|                         +--| (74)
+|                         |  |           +--Reboulia_hemisphaerica
+|                         |  |        +--| (93)
+|                         |  |        |  |  +--Plagiochasma_intermedium
+|                         |  |        |  +--| (100)
+|                         |  |        |     +--Plagiochasma_appendiculatum
+|                         |  |     +--| (59)
+|                         |  |     |  +--Asterella_mussuriensis
+|                         |  |  +--| (57)
+|                         |  |  |  |  +--Asterella_wallichiana
+|                         |  |  |  +--| (57)
+|                         |  |  |     |  +--Asterella_leptophyla
+|                         |  |  |     +--| (100)
+|                         |  |  |        +--Asterella_cruciata
+|                         |  +--| (100)
+|                         |     |  +--Mannia_fragans
+|                         |     +--| (100)
+|                         |        +--Mannia_controversa
+|                      +--| (100)
+|                      |  |  +--Cryptomitrium_himalayense
+|                      |  +--| (97)
+|                      |     +--Asterellopsis_grollei
+|                   +--| (92)
+|                   |  +----Conocephalum_conicum
+|               +---| (100)
+|               |   +----Riccia_cavernosa
+|           +---| (99)
+|           |   +-------Sphaerocarpos_texanus
+|     +-----| (100)
+|     |     +----------Blasia_pusilla
++-----| (99)
+|     |                       +--------Trichocolea_tomentella
+|     |                    +--| (97)
+|     |                    |  +---------------Bazzania_praerupta
+|     |                 +--| (95)
+|     |                 |  |      +--Plagiochila_chinensis
+|     |                 |  +------| (100)
+|     |                 |         +--Hebertus_dicranus
+|     |           +-----| (100)
+|     |           |     |  +-------------Scapania_ciliata
+|     |           |     +--| (86)
+|     |           |        +--------------------Calypogeia_fissa
+|     |        +--| (97)
+|     |        |  |  +---------------------Schistochilia_macrodonta
+|     |        |  +--| (85)
+|     |        |     |     +----------------------Radula_japonica
+|     |        |     |  +--| (97)
+|     |        |     |  |  |                  +---Ptychanthus_striatus
+|     |        |     |  |  |       +----------| (100)
+|     |        |     |  |  |       |          |    +--Cololejeunea_lanciloba
+|     |        |     |  |  |       |          +----| (100)
+|     |        |     |  |  |       |               +--Cheilolejeunea_xanthocarpa
+|     |        |     |  |  |   +---| (98)
+|     |        |     |  |  |   |   +----------Jubula_hutchinsiae
+|     |        |     |  |  +---| (100)
+|     |        |     |  |      +-----------Frullania_nodulosa
+|     |        |     +--| (65)
+|     |        |        +------Ptilidium_ciliare
+|     |     +--| (65)
+|     |     |  |              +------------------------Riccardia_latifrons
+|     |     |  |         +----| (99)
+|     |     |  |         |    |                       +--Aneura_pinguis
+|     |     |  |         |    +-----------------------| (100)
+|     |     |  |         |                            +---Aneura_mirabilis
+|     |     |  +---------| (100)
+|     |     |            +-------------------Metzgeria_leptoneura
+|     +-----| (99)
+|           |  +---------------Pellia_endiviifolia
+|           +--| (75)
+|              |   +------------------Makinoa_crispata
+|              +---| (92)
+|                  +------------------------Fossombronia_cristula
+|
+|  +--------------------Treubia_lacunosa
++--| (88)
+   +----------------------------------------Haplomitrium_mnioides
+
+
+Consensus tree in newick format: 
+
+(Sphagnum_palustre:0.1689531897,(((((((Calasterella_californica:0.0149286910,((((Reboulia_hemisphaerica:0.0060641473,(Plagiochasma_intermedium:0.0111989521,Plagiochasma_appendiculatum:0.0072264229)100:0.0072741041)93:0.0035991822,Asterella_mussuriensis:0.0104089481)59:0.0010538254,(Asterella_wallichiana:0.0156891762,(Asterella_leptophyla:0.0040100138,Asterella_cruciata:0.0041598285)100:0.0064941553)57:0.0027914070)57:0.0017231867,(Mannia_fragans:0.0069159012,Mannia_controversa:0.0077625703)100:0.0078778510)100:0.0077343052)74:0.0024015172,(Cryptomitrium_himalayense:0.0193065701,Asterellopsis_grollei:0.0127499833)97:0.0042933777)100:0.0190842494,Conocephalum_conicum:0.0262121365)92:0.0077431653,Riccia_cavernosa:0.0282468958)100:0.0213946171,Sphaerocarpos_texanus:0.0424383741)99:0.0218159866,Blasia_pusilla:0.0565730198)100:0.0324244089,((((((Trichocolea_tomentella:0.0476964575,Bazzania_praerupta:0.0821200051)97:0.0112574577,(Plagiochila_chinensis:0.0000029060,Hebertus_dicranus:0.0000029060)100:0.0378192658)95:0.0125910058,(Scapania_ciliata:0.0734645651,Calypogeia_fissa:0.1068012955)86:0.0075989032)100:0.0351932504,(Schistochilia_macrodonta:0.1117360605,((Radula_japonica:0.1173636606,(((Ptychanthus_striatus:0.0228798865,(Cololejeunea_lanciloba:0.0000029060,Cheilolejeunea_xanthocarpa:0.0000029060)100:0.0288109248)100:0.0590868908,Jubula_hutchinsiae:0.0601642890)98:0.0208259186,Frullania_nodulosa:0.0621374654)100:0.0216535504)97:0.0186456314,Ptilidium_ciliare:0.0369297646)65:0.0042000108)85:0.0097214677)97:0.0149065845,((Riccardia_latifrons:0.1272421796,(Aneura_pinguis:0.0155198345,Aneura_mirabilis:0.0249853781)100:0.1240018770)99:0.0298164591,Metzgeria_leptoneura:0.1027772295)100:0.0504783643)65:0.0062799554,(Pellia_endiviifolia:0.0853438131,(Makinoa_crispata:0.0968840846,Fossombronia_cristula:0.1266579505)92:0.0215944550)75:0.0125984608)99:0.0344461843)99:0.0320840609,(Treubia_lacunosa:0.1091906019,Haplomitrium_mnioides:0.2083022927)88:0.0162160216);
+
+TIME STAMP
+----------
+
+Date and time: Thu Feb  1 20:45:28 2024
+Total CPU time used: 19.057493 seconds (0h:0m:19s)
+Total wall-clock time used: 19.17487907 seconds (0h:0m:19s)
+

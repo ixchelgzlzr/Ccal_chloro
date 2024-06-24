@@ -1,0 +1,48 @@
+#NEXUS
+[Data written by write.nexus.data.R, Mon Jan 15 13:59:27 2024]
+BEGIN DATA;
+  DIMENSIONS NTAX=39 NCHAR=30;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Calasterella_californica          111100011100000101110111111010
+    Asterella_cruciata                111100011100000101110111111010
+    Asterella_leptophylla              111100011100000101110111111010
+    Asterella_wallichiana             111100011101000101110111111010
+    Asterella_mussuriensis            111100011100000101110111111010
+    Asterellopsis_grollei             111100011101000101110111111010
+    Cryptomitrium_himalayense         111100011101000101110111111010
+    Mannia_controversa                111100011100000101110111111010
+    Mannia_fragans                    111100011100000101110111111010
+    Plagiochasma_appendiculatum       111100011100000101110111111010
+    Plagiochasma_intermedium          111100011101000101110111111010
+    Reboulia_hemisphaerica            111100011100000101110111111010
+    Bazzania_praerupta                111100011100000111110111111010
+    Hebertus_dicranus                 011100011101100111111111111010
+    Plagiochila_chinensis             011100011101100111111111111010
+    Trichocolea_tomentella            111100011101100111110111111010
+    Calypogeia_fissa                  111110011101110111110111111010
+    Scapania_ciliata                  111100011111100111111111111010
+    Schistochila_macrodonta          110100011101000111111111111010
+    Cheilolejeunea_xanthocarpa        111100011101100111110111111010
+    Cololejeunea_lanciloba            111100011101100111110111111010
+    Ptychanthus_striatus              011100011101000111110111111010
+    Jubula_hutchinsiae                111100011101100111111111111011
+    Frullania_nodulosa                011100011101000111111111111011
+    Radula_japonica                   001100011101100111111111111011
+    Ptilidium_ciliare                 111100011101000111110111111010
+    Aneura_pinguis                    111101111111111111110110111010
+    Aneura_mirabilis                  10-100011111000111110010111000
+    Riccardia_latifrons               111100011111000111110011111010
+    Metzgeria_leptoneura              011111111111000111111111111010
+    Makinoa_crispata                  111100011101000111111111111010
+    Fossombronia_cristula             011101110101100111110111111010
+    Pellia_endiviifolia               111100011101100111111111111010
+    Riccia_cavernosa                  111100011101000101110111111010
+    Conocephalum_conicum              111100011101000101110111111010
+    Blasia_pusilla                    111100011101110111111111111010
+    Haplomitrium_mnioides             111101111111100111110111111101
+    Treubia_lacunosa                  1-1100010101110111110111111--1
+    Sphaerocarpos_texanus             111100011010000101110111111010
+  ;
+END;
+
