@@ -21,14 +21,14 @@ able to retrieve some of the larger clades of liverworts (like Aytoniaceae, or
 the complex thalloids lineage) but disagree with our current understanding
 of liverwort phylogenetic relationships, which is based on inferences from
 nucleotide evolution models. These disagreements appear to be driven by
-the convergent loss of sets of genes potentially associated with the evolu-
-tion of epiphytic and parasitic life styles (like in the case of _Aneura mirabilis_
+the convergent loss of sets of genes potentially associated with the evolution 
+of epiphytic and parasitic life styles (like in the case of _Aneura mirabilis_
 and _Treubia lacunosa_). We found that, congruent with our expectations,
-structural changes (_i.e._, gene gain/loss) evolve slower than nucleotides. Nev-
-ertheless our ancestral state reconstructions suggest that structural evolution
+structural changes (_i.e._, gene gain/loss) evolve slower than nucleotides. Nevertheless 
+our ancestral state reconstructions suggest that structural evolution
 can be complex, especially for genes that can be “multistate’—_e.g._, in the
-case of pseudogenization and tRNAs—for whom evolutionary rates are com-
-parable to nucleotide substitution rates. While inferences from structural
+case of pseudogenization and tRNAs—for whom evolutionary rates are comparable 
+to nucleotide substitution rates. While inferences from structural
 evolution alone partially conflict with inferences from nucleotide evolution,
 inferences with structural and nucleotide data together produce hypotheses
 with higher support. In this sense, the use of structural data might still be
