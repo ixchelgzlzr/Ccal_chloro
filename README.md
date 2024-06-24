@@ -1,5 +1,4 @@
-# Data and scripts for the paper
-### "The chloroplast genome of Calasterella californica in relation to structural genomic evolution in liverworts
+# Data and scripts for the paper "The chloroplast genome of Calasterella californica in relation to structural genomic evolution in liverworts" 
 Submitted to **Molecular phylogenetics and evolution**
 
 ### Abstract
