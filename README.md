@@ -42,7 +42,7 @@ help to build evolutionary models more adequate for this type of data.
 
 ### This repository contains three main folders
 
-#### R - It contains all the scripts of the analyses and figures done in R
+#### 1) R - It contains all the scripts of the analyses and figures done in R
 
 |- **data**  
 |---- Corrected_C_californica_chloroplast_genome.gb - **Reference genome of _C. californica_**.  
@@ -64,7 +64,7 @@ help to build evolutionary models more adequate for this type of data.
 |---- three_phylogenies.R - produces Fig. 23 of the manuscript.  
 
 
-#### seq_phylo_analyses 
+#### 2) seq_phylo_analyses 
 
 This folder contains the sequence data necessary to run iqtree on rps4 and rbcL for liverworts. To replicate our analyses, you can run the line below:
 
